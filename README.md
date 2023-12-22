@@ -1,1 +1,1 @@
-# benim-depom
+# Basit Ram-Cpu Bilgisi Gösteren Script
