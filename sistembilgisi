@@ -1,0 +1,37 @@
+#!/bin/bash
+
+ram_boyut=$(grep -i memtotal /proc/meminfo | cut -d : -f 2)
+bos_ram=$(grep -i memfree /proc/meminfo | cut -d : -f 2)
+kullanilabilir_ram=$(grep -i memavailable /proc/meminfo | cut -d : -f 2)
+
+cpu1_modeli=$(grep -i "model name" /proc/cpuinfo | cut -d: -f 2 | head -n 1)
+cpu1_hizi=$(grep -i "cpu mhz" /proc/cpuinfo | cut -d: -f 2 | head -n 1)
+cpu1_onbellek_boyutu=$(grep -i "cache size" /proc/cpuinfo | cut -d: -f 2 | head -n 1)
+
+cpu2_modeli=$(grep -i "model name" /proc/cpuinfo | cut -d: -f 2 | tail -n 1)
+cpu2_hizi=$(grep -i "cpu mhz" /proc/cpuinfo | cut -d: -f 2 | tail -n 1)
+cpu2_onbellek_boyutu=$(grep -i "cache size" /proc/cpuinfo | cut -d: -f 2 | tail -n 1)
+
+echo
+echo "	        	SİSTEM BİLGİLERİ		"
+echo
+echo "		RAM"
+echo "Toplam Ram Boyutu:" $ram_boyut
+echo ---------------------------------
+echo "Boş Ram Boyutu:" $bos_ram 
+echo ---------------------------------
+echo "Kullanılabilir Ram Boyutu:" $kullanilabilir_ram
+echo
+echo "		CPU 1"
+echo "İşlemci Modeli:" $cpu1_modeli
+echo ---------------------------------
+echo "İşlemci Hızı:" $cpu1_hizi "Mhz"
+echo ---------------------------------
+echo "İşlemcinin Önbellek Boyutu:" $cpu1_onbellek_boyutu
+echo
+echo "		CPU 2"
+echo "İşlemci Modeli:" $cpu2_modeli
+echo ---------------------------------
+echo "İşlemci Hızı:" $cpu2_hizi "Mhz"
+echo ---------------------------------
+echo "İşlemcinin Önbellek Boyutu:" $cpu2_onbellek_boyutu
